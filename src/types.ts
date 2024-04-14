@@ -1,9 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import store from "./store";
 
 export interface CounterState {
-    count: number;
+    value: number;
 }
 
+export type RootState = ReturnType<typeof store.getState>
 
 
 export type IncrementAction = PayloadAction<number>

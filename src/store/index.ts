@@ -5,14 +5,20 @@ import { CounterState, IncrementAction } from "../types";
 
 
 
-const initialState: CounterState = { count: 0 };
+const initialState: CounterState = { value: 0 };
 
 const counterSlice = createSlice({
     name:'counter',
     initialState,
     reducers: {
-        increment(state, action: IncrementAction) {
-            state.count++
+        increment(state) {
+            state.value++;
+        },
+        decrement(state) {
+            if (state.value === 0) {
+                return state;
+            } else
+            state.value--;
         }
     }
 })
@@ -22,6 +28,6 @@ const store = configureStore({
 });
 
 
-// export const {increment} =counterSlice.actions;
-export type RootState = ReturnType<typeof store.getState>
+export const counterActions = counterSlice.actions;
 export default store;
+export const {increment, decrement} =counterSlice.actions;

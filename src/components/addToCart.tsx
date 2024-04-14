@@ -2,12 +2,21 @@ import React from 'react';
 import { IoCartOutline } from 'react-icons/io5';
 import minus from '../images/icon-minus.svg';
 import plus from '../images/icon-plus.svg';
-import { useSelector } from 'react-redux';
-import { CounterState } from '../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { CounterState, RootState } from '../types';
+import { decrement, increment } from '../store';
 
 const AddToCart: React.FC = () => {
-  const selectCounter = (state: CounterState) => state.count;
+  const selectCounter = (state: RootState) => state.counter.value;
   const counter = useSelector(selectCounter);
+
+  const dispatch = useDispatch();
+  const incrementHandler = () => {
+    dispatch(increment());
+  };
+  const decrementHandler = () => {
+    dispatch(decrement());
+  };
 
   return (
     <>
@@ -22,9 +31,19 @@ const AddToCart: React.FC = () => {
       </div>
       {/* Adding Item */}
       <div className="bg-gray-100 rounded-md flex justify-between py-4 items-center">
-        <img className="h-1 px-6" src={minus} alt="A minus icon" />
+        <img
+          onClick={decrementHandler}
+          className="h-1 px-6"
+          src={minus}
+          alt="A minus icon"
+        />
         <h1>{counter}</h1>
-        <img className="px-6" src={plus} alt="A plus icon" />
+        <img
+          onClick={incrementHandler}
+          className="px-6"
+          src={plus}
+          alt="A plus icon"
+        />
       </div>
       <button className="bg-orange-500 text-white w-full rounded-md mt-4 h-14 flex items-center justify-center ">
         <div className="mr-4 text-xl">
