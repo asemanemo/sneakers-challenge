@@ -4,7 +4,7 @@ import minus from '../images/icon-minus.svg';
 import plus from '../images/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { CounterState, RootState } from '../types';
-import { decrement, increment, cartClicked } from '../store';
+import { decrement, increment, cartUpdate } from '../store';
 
 // باید آپدیت شدن عدد روی سبد فقط با کلیک کردن دکمه رخ بده
 
@@ -22,7 +22,7 @@ const AddToCart: React.FC = () => {
 
   const formHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(cartClicked());
+    dispatch(cartUpdate());
   };
 
   return (

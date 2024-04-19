@@ -4,8 +4,10 @@ import { IoCartOutline } from 'react-icons/io5';
 import imgAvr from '../images/image-avatar.png';
 import logo from '../images/logo.svg';
 import close from '../images/icon-close.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../types';
+import CartList from './CartList';
+import { cartClicked } from '../store';
 
 const Navbar: React.FC = () => {
   const [isDroped, setDroped] = useState(false);
@@ -14,10 +16,15 @@ const Navbar: React.FC = () => {
   const selectCounter = (state: RootState) => state.counter.value;
   const count = useSelector(selectCounter);
 
-  const [cartٔNumber, setCartNumber] = useState(count);
-
   const selectCartClicked = (state: RootState) => state.cart.cartUpdate;
   const cartUpdateSelect = useSelector(selectCartClicked);
+
+  const cartListSelect = (state: RootState) => state.cartList.cartListValue;
+  const cartList = useSelector(cartListSelect);
+
+  const [cartNumber, setCartNumber] = useState(count);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCartNumber(count);
@@ -33,6 +40,10 @@ const Navbar: React.FC = () => {
     setModalShowing(false);
   };
 
+  const handleCartListClick = () => {
+    dispatch(cartClicked());
+  };
+
   return (
     <div className="flex p-2 items-center justify-between h-full">
       <div className="flex items-center">
@@ -46,11 +57,15 @@ const Navbar: React.FC = () => {
         </h1>
       </div>
       <div className="flex items-center">
-        <div className="relative text-4xl px-4 mb-4 mr-4">
+        <div
+          onClick={handleCartListClick}
+          className="relative text-4xl px-4 mb-4 mr-4"
+        >
+          {cartList && <CartList />}
           <IoCartOutline />
 
           <div className="absolute text-xl size-7 bg-yellow-500 px-2 rounded-full -mt-4  z-20">
-            {cartٔNumber}
+            {cartNumber}
           </div>
         </div>
         <img className="w-8" alt="This is an avatar" src={imgAvr} />

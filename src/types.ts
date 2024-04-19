@@ -9,6 +9,10 @@ export interface CartState {
     cartUpdate: boolean;
 }
 
+export interface CartStateClicked {
+    cartListValue: boolean;
+}
+
 export type RootState = ReturnType<typeof store.getState>
 
 
