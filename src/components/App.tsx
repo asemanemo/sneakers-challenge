@@ -1,4 +1,4 @@
-import { Navbar } from './Navbar';
+import Navbar from './Navbar';
 import AddToCart from './addToCart';
 import { IoMenu } from 'react-icons/io5';
 import { IoCartOutline } from 'react-icons/io5';

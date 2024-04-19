@@ -5,6 +5,10 @@ export interface CounterState {
     value: number;
 }
 
+export interface CartState {
+    cartUpdate: boolean;
+}
+
 export type RootState = ReturnType<typeof store.getState>
 
 

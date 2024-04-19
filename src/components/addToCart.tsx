@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { IoCartOutline } from 'react-icons/io5';
 import minus from '../images/icon-minus.svg';
 import plus from '../images/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { CounterState, RootState } from '../types';
-import { decrement, increment } from '../store';
+import { decrement, increment, cartClicked } from '../store';
+
+// باید آپدیت شدن عدد روی سبد فقط با کلیک کردن دکمه رخ بده
 
 const AddToCart: React.FC = () => {
   const selectCounter = (state: RootState) => state.counter.value;
@@ -16,6 +18,11 @@ const AddToCart: React.FC = () => {
   };
   const decrementHandler = () => {
     dispatch(decrement());
+  };
+
+  const formHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    dispatch(cartClicked());
   };
 
   return (
@@ -45,12 +52,17 @@ const AddToCart: React.FC = () => {
           alt="A plus icon"
         />
       </div>
-      <button className="bg-orange-500 text-white w-full rounded-md mt-4 h-14 flex items-center justify-center ">
-        <div className="mr-4 text-xl">
-          <IoCartOutline />
-        </div>
-        Add to cart
-      </button>
+      <form>
+        <button
+          onClick={formHandler}
+          className="bg-orange-500 text-white w-full rounded-md mt-4 h-14 flex items-center justify-center "
+        >
+          <div className="mr-4 text-xl">
+            <IoCartOutline />
+          </div>
+          Add to cart
+        </button>
+      </form>
     </>
   );
 };

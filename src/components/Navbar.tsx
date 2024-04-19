@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMenu } from 'react-icons/io5';
 import { IoCartOutline } from 'react-icons/io5';
 import imgAvr from '../images/image-avatar.png';
 import logo from '../images/logo.svg';
 import close from '../images/icon-close.svg';
+import { useSelector } from 'react-redux';
+import { RootState } from '../types';
 
-export function Navbar() {
+const Navbar: React.FC = () => {
   const [isDroped, setDroped] = useState(false);
   const [modalShowing, setModalShowing] = useState(false);
+
+  const selectCounter = (state: RootState) => state.counter.value;
+  const count = useSelector(selectCounter);
+
+  const [cartٔNumber, setCartNumber] = useState(count);
+
+  const selectCartClicked = (state: RootState) => state.cart.cartUpdate;
+  const cartUpdateSelect = useSelector(selectCartClicked);
+
+  useEffect(() => {
+    setCartNumber(count);
+  }, [cartUpdateSelect]);
 
   const handleClick = () => {
     setDroped(true);
@@ -18,6 +32,7 @@ export function Navbar() {
     setDroped(false);
     setModalShowing(false);
   };
+
   return (
     <div className="flex p-2 items-center justify-between h-full">
       <div className="flex items-center">
@@ -31,8 +46,12 @@ export function Navbar() {
         </h1>
       </div>
       <div className="flex items-center">
-        <div className="text-2xl px-4">
+        <div className="relative text-4xl px-4 mb-4 mr-4">
           <IoCartOutline />
+
+          <div className="absolute text-xl size-7 bg-yellow-500 px-2 rounded-full -mt-4  z-20">
+            {cartٔNumber}
+          </div>
         </div>
         <img className="w-8" alt="This is an avatar" src={imgAvr} />
       </div>
@@ -63,4 +82,6 @@ export function Navbar() {
       )}
     </div>
   );
-}
+};
+
+export default Navbar;
