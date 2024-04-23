@@ -58,10 +58,11 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex items-center">
         <div
-          onClick={handleCartListClick}
+          onMouseEnter={handleCartListClick}
+          onMouseLeave={handleCartListClick}
           className="relative text-4xl px-4 mb-4 mr-4"
         >
-          {cartList && <CartList />}
+          {cartList && <CartList cartNumber={cartNumber} />}
           <IoCartOutline />
 
           <div className="absolute text-xl size-7 bg-yellow-500 px-2 rounded-full -mt-4  z-20">
