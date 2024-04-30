@@ -4,9 +4,9 @@ import { IoMenu } from 'react-icons/io5';
 import { IoCartOutline } from 'react-icons/io5';
 import imgAvr from '../images/image-avatar.png';
 import logo from '../images/logo.svg';
+import hero1 from '../images/image-product-1.jpg';
 import minus from '../images/icon-minus.svg';
 import plus from '../images/icon-plus.svg';
-import Slider from './Slider';
 
 function App() {
   return (
@@ -16,7 +16,9 @@ function App() {
 
       {/* This is Slider (mobile) */}
 
-      <Slider />
+      <div>
+        <img alt="This is an image of a shoe" src={hero1} />
+      </div>
 
       {/* This is text part */}
       <div className="p-8 ">
