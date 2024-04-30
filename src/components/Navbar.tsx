@@ -9,6 +9,16 @@ import { RootState } from '../types';
 import CartList from './CartList';
 import { cartClicked } from '../store';
 
+const navItems = (
+  <div>
+    <ul className="mb-4">Collection</ul>
+    <ul className="mb-4">Men</ul>
+    <ul className="mb-4">Women</ul>
+    <ul className="mb-4">About</ul>
+    <ul className="mb-4">Contact</ul>
+  </div>
+);
+
 const Navbar: React.FC = () => {
   const [isDroped, setDroped] = useState(false);
   const [modalShowing, setModalShowing] = useState(false);
@@ -46,15 +56,25 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="flex p-2 items-center justify-between h-full">
-      <div className="flex items-center">
-        <div className="text-2xl">
+      <div className="flex justify-between items-center">
+        <div className="lg:hidden text-2xl">
           <div onClick={handleClick}>
             <IoMenu />
           </div>
         </div>
-        <h1 className="px-6">
+        <div className="px-6">
           <img alt="This is logo" src={logo} />
-        </h1>
+        </div>
+
+        <div className="hidden lg:block ml-12 mt-1">
+          <ul className="flex">
+            <li className="mr-16 hover:underline">Collection</li>
+            <li className="mr-16 hover:underline">Men</li>
+            <li className="mr-16 hover:underline">Women</li>
+            <li className="mr-16 hover:underline">About</li>
+            <li className="mr-16 hover:underline">Contact</li>
+          </ul>
+        </div>
       </div>
       <div className="flex items-center">
         <div
@@ -69,23 +89,17 @@ const Navbar: React.FC = () => {
             {cartNumber}
           </div>
         </div>
-        <img className="w-8" alt="This is an avatar" src={imgAvr} />
+        <img className="w-10" alt="This is an avatar" src={imgAvr} />
       </div>
 
       {/* This is mobile Navbar Modal */}
       {isDroped && (
-        <div className="fixed bg-white top-0 h-full px-6 py-6 z-20 left-0">
+        <div className="lg:hidden fixed bg-white top-0 h-full px-6 py-6 z-20 left-0">
           <div className="left-0 ml-4 mr-52 overflow-hidden">
             <ul>
               <img onClick={handleClose} src={close} alt="Close button" />
             </ul>
-            <div className="py-16">
-              <ul className="font-bold mb-4">Collection</ul>
-              <ul className="font-bold mb-4">Men</ul>
-              <ul className="font-bold mb-4">Women</ul>
-              <ul className="font-bold mb-4">About</ul>
-              <ul className="font-bold mb-4">Contact</ul>
-            </div>
+            <div className="py-16 font-bold">{navItems}</div>
           </div>
         </div>
       )}
