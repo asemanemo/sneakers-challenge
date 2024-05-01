@@ -82,7 +82,9 @@ const Navbar: React.FC = () => {
           onMouseLeave={handleCartListClick}
           className="relative text-4xl px-4 mb-4 mr-4"
         >
-          {cartList && <CartList cartNumber={cartNumber} />}
+          <div className="absolute z-20">
+            {cartList && <CartList cartNumber={cartNumber} />}
+          </div>
           <IoCartOutline />
 
           <div className="absolute text-xl size-7 bg-yellow-500 px-2 rounded-full -mt-4  z-20">

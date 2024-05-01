@@ -7,17 +7,20 @@ import logo from '../images/logo.svg';
 import hero1 from '../images/image-product-1.jpg';
 import minus from '../images/icon-minus.svg';
 import plus from '../images/icon-plus.svg';
+import Slider from './Slider';
 
 function App() {
   return (
     <div className="font-myFont">
       {/* This is navbar */}
-      <Navbar />
-
-      {/* This is Slider (mobile) */}
-
-      <div>
-        <img alt="This is an image of a shoe" src={hero1} />
+      <div className="relative">
+        <div className="z-20">
+          <Navbar />
+        </div>
+        {/* This is Slider (mobile) */}
+        <div className="z-10">
+          <Slider />
+        </div>
       </div>
 
       {/* This is text part */}
