@@ -16,7 +16,7 @@ function App() {
 
       <Navbar />
       {/* This is Slider (mobile) */}
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row lg:mt-10">
         <Slider />
         {/* This is text part */}
         <div className="p-8 lg:ml-32">
