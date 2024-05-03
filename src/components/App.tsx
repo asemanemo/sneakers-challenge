@@ -42,9 +42,10 @@ function App() {
       </div>
 
       <div className="flex flex-row mt-32 mb-6 justify-center ">
-        <h1 className="">Finished by</h1>
+        <h1>Finished</h1>
+        <h1 className="ml-4"> by</h1>
         <a
-          className="text-red-500 ml-6 hover:underline"
+          className="text-red-500 ml-4 hover:underline"
           href="https://github.com/asemanemo/"
         >
           Asemanemo

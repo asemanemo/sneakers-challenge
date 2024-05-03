@@ -38,21 +38,25 @@ const AddToCart: React.FC = () => {
       </div>
       {/* Adding Item */}
 
-      <div className="flex flex-col lg:flex-row lg:justify-between">
+      <div className="flex flex-col lg:flex-row lg:justify-between mt-24">
         <div className="bg-gray-100 rounded-md flex justify-between py-4 items-center lg:mr-10 ">
-          <img
-            onClick={decrementHandler}
-            className="h-1 px-6 lg:px-12"
-            src={minus}
-            alt="A minus icon"
-          />
+          <button>
+            <img
+              onClick={decrementHandler}
+              className="h-1 px-6 lg:px-12"
+              src={minus}
+              alt="A minus icon"
+            />
+          </button>
           <h1 className="">{counter}</h1>
-          <img
-            onClick={incrementHandler}
-            className="px-6 lg:px-12"
-            src={plus}
-            alt="A plus icon"
-          />
+          <button>
+            <img
+              onClick={incrementHandler}
+              className="px-6 lg:px-12"
+              src={plus}
+              alt="A plus icon"
+            />
+          </button>
         </div>
         <form>
           <button
