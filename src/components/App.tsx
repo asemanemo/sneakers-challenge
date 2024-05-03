@@ -13,32 +13,35 @@ function App() {
   return (
     <div className="font-myFont">
       {/* This is navbar */}
-      <div className="relative">
-        <div className="z-20">
-          <Navbar />
-        </div>
-        {/* This is Slider (mobile) */}
-        <div className="z-10">
-          <Slider />
+
+      <Navbar />
+      {/* This is Slider (mobile) */}
+      <div className="flex flex-col lg:flex-row">
+        <Slider />
+        {/* This is text part */}
+        <div className="p-8 lg:ml-32">
+          <h1 className=" text-orange-500 mb-4 text-md font-bold">
+            SNEAKER COMPANY
+          </h1>
+          <h1 className="text-4xl font-bold mb-4">
+            Fall Limited Edition Sneakers
+          </h1>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
+              voluptas ex itaque. Est officia dolor, non quaerat saepe quisquam
+              culpa sint similique. Obcaecati vero laboriosam veniam nemo, alias
+              assumenda beatae.
+            </p>
+          </div>
+          {/* The Price Section */}
+          <div className="lg:items-center ">
+            <AddToCart />
+          </div>
         </div>
       </div>
 
-      {/* This is text part */}
-      <div className="p-8 ">
-        <h1 className=" text-orange-500 mb-4 text-sm">SNEAKER COMPANY</h1>
-        <h1 className="text-2xl font-bold mb-4">
-          Fall Limited Edition Sneakers
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
-          voluptas ex itaque. Est officia dolor, non quaerat saepe quisquam
-          culpa sint similique. Obcaecati vero laboriosam veniam nemo, alias
-          assumenda beatae.
-        </p>
-
-        {/* The Price Section */}
-        <AddToCart />
-      </div>
+      <h1 className="mt-32">Here this is</h1>
     </div>
   );
 }

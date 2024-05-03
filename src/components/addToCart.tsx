@@ -37,32 +37,35 @@ const AddToCart: React.FC = () => {
         <h3 className="text-gray-500 font-bold line-through">$250.00</h3>
       </div>
       {/* Adding Item */}
-      <div className="bg-gray-100 rounded-md flex justify-between py-4 items-center">
-        <img
-          onClick={decrementHandler}
-          className="h-1 px-6"
-          src={minus}
-          alt="A minus icon"
-        />
-        <h1>{counter}</h1>
-        <img
-          onClick={incrementHandler}
-          className="px-6"
-          src={plus}
-          alt="A plus icon"
-        />
+
+      <div className="flex flex-col lg:flex-row lg:justify-between">
+        <div className="bg-gray-100 rounded-md flex justify-between py-4 items-center lg:mr-10 ">
+          <img
+            onClick={decrementHandler}
+            className="h-1 px-6 lg:px-12"
+            src={minus}
+            alt="A minus icon"
+          />
+          <h1 className="">{counter}</h1>
+          <img
+            onClick={incrementHandler}
+            className="px-6 lg:px-12"
+            src={plus}
+            alt="A plus icon"
+          />
+        </div>
+        <form>
+          <button
+            onClick={formHandler}
+            className="bg-orange-500 text-white w-full rounded-md mt-4 h-14 flex items-center justify-center lg:w-72"
+          >
+            <div className="mr-4 text-xl">
+              <IoCartOutline />
+            </div>
+            Add to cart
+          </button>
+        </form>
       </div>
-      <form>
-        <button
-          onClick={formHandler}
-          className="bg-orange-500 text-white w-full rounded-md mt-4 h-14 flex items-center justify-center "
-        >
-          <div className="mr-4 text-xl">
-            <IoCartOutline />
-          </div>
-          Add to cart
-        </button>
-      </form>
     </>
   );
 };
