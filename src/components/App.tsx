@@ -41,7 +41,15 @@ function App() {
         </div>
       </div>
 
-      <h1 className="mt-32">Here this is</h1>
+      <div className="flex flex-row mt-32 mb-6 justify-center ">
+        <h1 className="">Finished by</h1>
+        <a
+          className="text-red-500 ml-6 hover:underline"
+          href="https://github.com/asemanemo/"
+        >
+          Asemanemo
+        </a>
+      </div>
     </div>
   );
 }
