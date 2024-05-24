@@ -32,13 +32,26 @@ const Navbar: React.FC = () => {
   const cartListSelect = (state: RootState) => state.cartList.cartListValue;
   const cartList = useSelector(cartListSelect);
 
-  const [cartNumber, setCartNumber] = useState(count);
+  const [cartNumber, setCartNumber] = useState<number>(() => {
+    const storedCartNumber = localStorage.getItem('cart');
+    return storedCartNumber ? parseInt(storedCartNumber, 10) : 0;
+  });
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     setCartNumber(count);
   }, [cartUpdateSelect]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', cartNumber.toString());
+  }, [cartNumber]);
+
+  useEffect(() => {
+    const storedCartNumber = localStorage.getItem('cart');
+    if (storedCartNumber) {
+      setCartNumber(parseInt(storedCartNumber, 10));
+    }
+  }, []);
 
   const handleClick = () => {
     setDroped(true);
